@@ -1,0 +1,6 @@
+@BlynkTalk.API_HostAddress = http://localhost:5222
+
+GET {{BlynkTalk.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
