@@ -23,6 +23,13 @@ namespace BlynkTalk.API.Services
                 // (they could have disconnected while waiting)
                 while (_waitingQueue.TryDequeue(out var candidateId))
                 {
+                    var matchedSet = _waitingSet.Where(s => s == candidateId);
+
+                    if (matchedSet == null || matchedSet.Any() == false)
+                    {
+                        continue;
+                    }
+
                     // Remove from set regardless
                     _waitingSet.Remove(candidateId);
 
