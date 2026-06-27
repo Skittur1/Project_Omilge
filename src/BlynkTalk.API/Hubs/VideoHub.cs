@@ -222,7 +222,10 @@ namespace BlynkTalk.API.Hubs
 
             // Notify the partner — Angular shows "Stranger disconnected" and reveals Start button again
             if (partnerId != null)
+            {
                 await Clients.Client(partnerId).SendAsync(ClientEvents.PartnerLeft);
+                await RequeuePartner(partnerId);
+            }
 
             // The cancelling user goes back to the Start screen — no action needed from server
             // Angular simply shows the Start button again on receiving no further events
